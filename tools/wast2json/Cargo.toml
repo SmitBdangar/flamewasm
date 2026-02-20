@@ -1,0 +1,17 @@
+[package]
+name        = "wast2json"
+description = "Convert .wast spec files to JSON for CI diffing"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+
+[[bin]]
+name = "wast2json"
+path = "src/main.rs"
+
+[dependencies]
+wast        = { workspace = true }
+serde       = { workspace = true }
+serde_json  = { workspace = true }
+clap        = { workspace = true }
+anyhow      = { workspace = true }

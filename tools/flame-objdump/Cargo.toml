@@ -1,0 +1,16 @@
+[package]
+name        = "flame-objdump"
+description = "FlameWasm module disassembler / inspector"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+
+[[bin]]
+name = "flame-objdump"
+path = "src/main.rs"
+
+[dependencies]
+flame-core       = { path = "../../crates/flame-core" }
+flame-cranelift  = { path = "../../crates/flame-cranelift" }
+clap             = { workspace = true }
+anyhow           = { workspace = true }

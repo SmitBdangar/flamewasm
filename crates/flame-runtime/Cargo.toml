@@ -1,0 +1,17 @@
+[package]
+name        = "flame-runtime"
+description = "WebAssembly instance execution engine for FlameWasm"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+authors.workspace    = true
+repository.workspace = true
+
+[dependencies]
+flame-core       = { path = "../flame-core" }
+flame-cranelift  = { path = "../flame-cranelift" }
+anyhow           = { workspace = true }
+thiserror        = { workspace = true }
+memmap2          = { workspace = true }
+libc             = { workspace = true }
+tracing          = { workspace = true }

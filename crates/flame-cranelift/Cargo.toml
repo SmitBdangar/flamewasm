@@ -1,0 +1,24 @@
+[package]
+name        = "flame-cranelift"
+description = "Cranelift AOT compiler backend for FlameWasm"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+authors.workspace    = true
+repository.workspace = true
+
+[dependencies]
+flame-core          = { path = "../flame-core" }
+cranelift-codegen   = { workspace = true }
+cranelift-frontend  = { workspace = true }
+cranelift-jit       = { workspace = true }
+cranelift-native    = { workspace = true }
+cranelift-module    = { workspace = true }
+cranelift-object    = { workspace = true }
+object              = { workspace = true }
+anyhow              = { workspace = true }
+thiserror           = { workspace = true }
+tracing             = { workspace = true }
+
+[dev-dependencies]
+wat = { workspace = true }

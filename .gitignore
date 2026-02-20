@@ -1,0 +1,11 @@
+/target
+Cargo.lock
+*.flame.o
+*.wasm
+!tests/fixtures/**/*.wasm
+!crates/flame-spec-tests/fixtures/**/*.wasm
+*.pdb
+.env
+benches/results/
+docs/diagrams/*.png
+assets/*.png

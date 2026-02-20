@@ -1,0 +1,82 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/flame-core",
+    "crates/flame-cranelift",
+    "crates/flame-runtime",
+    "crates/flame-wasi",
+    "crates/flame-sandbox",
+    "crates/flame-cli",
+    "crates/flame-spec-tests",
+    "tools/wast2json",
+    "tools/flame-objdump",
+    "tools/flame-profiler",
+]
+
+[workspace.package]
+version     = "0.1.0"
+edition     = "2021"
+license     = "MIT OR Apache-2.0"
+authors     = ["FlameWasm Contributors"]
+repository  = "https://github.com/SmitBdangar/flamewasm"
+homepage    = "https://github.com/SmitBdangar/flamewasm"
+keywords    = ["wasm", "webassembly", "wasi", "cranelift", "aot"]
+categories  = ["wasm", "compilers", "virtualization"]
+
+[workspace.dependencies]
+# Core WASM parsing
+wasmparser  = "0.218"
+wat         = "1.220"
+
+# Cranelift AOT backend
+cranelift-codegen       = { version = "0.113", features = ["all-arch"] }
+cranelift-frontend      = "0.113"
+cranelift-jit           = "0.113"
+cranelift-native        = "0.113"
+cranelift-wasm          = "0.113"
+cranelift-module        = "0.113"
+cranelift-object        = "0.113"
+
+# Object file / binary utilities
+object      = { version = "0.36", features = ["write"] }
+
+# Error handling
+anyhow      = "1"
+thiserror   = "2"
+
+# CLI
+clap        = { version = "4", features = ["derive", "env"] }
+
+# Logging / tracing
+tracing             = "0.1"
+tracing-subscriber  = { version = "0.3", features = ["env-filter"] }
+
+# System
+getrandom   = "0.2"
+libc        = "0.2"
+memmap2     = "0.9"
+
+# Testing / fuzzing
+arbitrary   = { version = "1", features = ["derive"] }
+wast        = "220"
+
+# Serialization (for spec-test runner)
+serde       = { version = "1", features = ["derive"] }
+serde_json  = "1"
+
+# Benchmarks
+criterion   = { version = "0.5", features = ["html_reports"] }
+
+[profile.release]
+opt-level   = 3
+lto         = "thin"
+codegen-units = 1
+strip       = "symbols"
+
+[profile.bench]
+opt-level   = 3
+debug       = true
+
+[profile.dev]
+opt-level   = 0
+debug       = true

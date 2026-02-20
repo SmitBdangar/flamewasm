@@ -1,0 +1,25 @@
+[package]
+name        = "flame-spec-tests"
+description = "Official WebAssembly spec test suite runner for FlameWasm"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+authors.workspace    = true
+repository.workspace = true
+
+[[bin]]
+name = "flame-spec-tests"
+path = "src/main.rs"
+
+[dependencies]
+flame-core      = { path = "../flame-core" }
+flame-cranelift = { path = "../flame-cranelift" }
+flame-runtime   = { path = "../flame-runtime" }
+flame-wasi      = { path = "../flame-wasi" }
+wast            = { workspace = true }
+wat             = { workspace = true }
+anyhow          = { workspace = true }
+serde           = { workspace = true }
+serde_json      = { workspace = true }
+tracing         = { workspace = true }
+tracing-subscriber = { workspace = true }

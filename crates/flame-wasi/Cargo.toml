@@ -1,0 +1,15 @@
+[package]
+name        = "flame-wasi"
+description = "WASI preview-1 host function implementation for FlameWasm"
+version.workspace    = true
+edition.workspace    = true
+license.workspace    = true
+authors.workspace    = true
+repository.workspace = true
+
+[dependencies]
+flame-runtime  = { path = "../flame-runtime" }
+anyhow         = { workspace = true }
+thiserror      = { workspace = true }
+getrandom      = { workspace = true }
+tracing        = { workspace = true }
