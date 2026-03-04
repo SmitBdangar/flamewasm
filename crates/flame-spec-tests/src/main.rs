@@ -24,7 +24,6 @@ mod fixtures {
     pub const F64: &str = include_str!("../fixtures/f64.wast");
     pub const MEMORY: &str = include_str!("../fixtures/memory.wast");
     pub const CONTROL: &str = include_str!("../fixtures/br.wast");
-    pub const HELLO: &str = include_str!("../fixtures/hello.wat");
 }
 
 fn main() -> Result<()> {
@@ -82,7 +81,7 @@ fn run_wast_file(
 ) {
     let buf = wast::parser::ParseBuffer::new(src).unwrap_or_else(|e| {
         eprintln!("parse buf error for {name}: {e}");
-        return wast::parser::ParseBuffer::new("").unwrap();
+        wast::parser::ParseBuffer::new("").unwrap()
     });
 
     let wast_file = match wast::parser::parse::<Wast>(&buf) {

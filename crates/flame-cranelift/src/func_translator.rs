@@ -102,6 +102,7 @@ impl<'a> FuncTranslator<'a> {
 // ─── Control frame ────────────────────────────────────────────────────────────
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct CtrlFrame {
     kind: CtrlKind,
     after_block: cranelift_codegen::ir::Block,

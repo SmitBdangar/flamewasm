@@ -3,11 +3,11 @@
 use std::collections::HashMap;
 
 use anyhow::{bail, Context, Result};
-use flame_core::ir::{ConstExpr, DataKind, ElemKind, ExportKind, Module};
+use flame_core::ir::{ConstExpr, DataKind, ExportKind, Module};
 use tracing::debug;
 
 use crate::{
-    global::Global, imports::Imports, memory::LinearMemory, table::Table, trap::Trap, val::Val,
+    global::Global, imports::Imports, memory::LinearMemory, table::Table, val::Val,
 };
 use flame_cranelift::CompiledModule;
 
@@ -40,14 +40,14 @@ impl Instance {
             .collect();
 
         // Allocate tables
-        let mut tables: Vec<Table> = wasm
+        let tables: Vec<Table> = wasm
             .tables
             .iter()
             .map(|t| Table::new(t.limits.min, t.limits.max))
             .collect();
 
         // Allocate globals
-        let mut globals: Vec<Global> = wasm
+        let globals: Vec<Global> = wasm
             .globals
             .iter()
             .map(|g| {
@@ -86,7 +86,7 @@ impl Instance {
             })
             .collect::<HashMap<_, _>>();
 
-        let mut inst = Self { memories, tables, globals, compiled, func_exports };
+        let inst = Self { memories, tables, globals, compiled, func_exports };
 
         // Run start function if present
         if let Some(start_idx) = wasm.start {

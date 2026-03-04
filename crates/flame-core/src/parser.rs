@@ -212,7 +212,7 @@ fn convert_const_expr(expr: &wasmparser::ConstExpr) -> Result<ConstExpr, ParseEr
 }
 
 fn convert_memarg(m: wasmparser::MemArg) -> MemArg {
-    MemArg { align: m.align as u8, offset: m.offset, memory_index: m.memory }
+    MemArg { align: m.align, offset: m.offset, memory_index: m.memory }
 }
 
 fn convert_block_type(bt: wasmparser::BlockType) -> Result<BlockType, ParseError> {

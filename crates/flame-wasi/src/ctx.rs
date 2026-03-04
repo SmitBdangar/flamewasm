@@ -1,9 +1,6 @@
 //! WASI context: holds all state for a single WASI instance.
 
-use std::{
-    collections::HashMap,
-    path::PathBuf,
-};
+use std::path::PathBuf;
 
 use crate::fd::FdTable;
 
@@ -13,11 +10,10 @@ pub struct WasiCtxBuilder {
     args: Vec<String>,
     env: Vec<(String, String)>,
     preopened_dirs: Vec<(String, PathBuf)>,
-    inherit_stdio: bool,
 }
 
 impl WasiCtxBuilder {
-    pub fn new() -> Self { Self { inherit_stdio: true, ..Default::default() } }
+    pub fn new() -> Self { Default::default() }
 
     pub fn args(mut self, args: impl IntoIterator<Item = String>) -> Self {
         self.args = args.into_iter().collect();

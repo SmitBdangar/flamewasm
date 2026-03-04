@@ -32,10 +32,10 @@ fn main() -> Result<()> {
     println!("  Code segs: {}", module.code.len());
     println!("  Data segs: {}", module.data.len());
 
-    if cli.exports || true {
+    if cli.exports {
         println!("\nExports:");
         for exp in &module.exports {
-            let ty = module.types.get(
+            let _ty = module.types.get(
                 module.functions.get(exp.index as usize).copied().unwrap_or(0) as usize
             );
             println!(

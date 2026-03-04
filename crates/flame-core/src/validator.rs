@@ -197,7 +197,7 @@ fn validate_instr(
     total_funcs: usize,
 ) -> Result<(), ValidationError> {
     // Helper to check top frame unreachability
-    let is_unreachable = ctrl.last().map_or(false, |f| f.unreachable);
+    let is_unreachable = ctrl.last().is_some_and(|f| f.unreachable);
 
     if is_unreachable {
         // In unreachable code the stack polymorphically accepts anything
@@ -645,7 +645,7 @@ fn push_vals(stack: &mut Vec<ValType>, types: &[ValType]) {
     stack.extend_from_slice(types);
 }
 
-fn push_ctrl(ctrl: &mut Vec<Frame>, stack: &Vec<ValType>, kind: FrameKind, results: Vec<ValType>) {
+fn push_ctrl(ctrl: &mut Vec<Frame>, stack: &[ValType], kind: FrameKind, results: Vec<ValType>) {
     ctrl.push(Frame {
         kind,
         result_types: results,

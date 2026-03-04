@@ -10,7 +10,7 @@ use flame_core::{parse, validate};
 use flame_cranelift::compile;
 use flame_runtime::{imports::Imports, instance::Instance, val::Val};
 use flame_sandbox::{Capability, SandboxCtx, SandboxPolicy};
-use flame_wasi::{WasiCtx, WasiCtxBuilder};
+use flame_wasi::WasiCtxBuilder;
 
 fn main() -> Result<()> {
     tracing_subscriber::fmt()

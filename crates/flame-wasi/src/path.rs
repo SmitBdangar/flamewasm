@@ -1,6 +1,6 @@
 //! WASI path_* host function implementations.
 
-use std::{fs, path::PathBuf};
+use std::fs;
 
 use crate::fd::{errno, FdEntry, FdTable};
 
@@ -19,7 +19,7 @@ pub fn path_open(
     };
     let full = host_root.join(path);
     match std::fs::OpenOptions::new().read(true).write(true).open(&full) {
-        Ok(f) => {
+        Ok(_) => {
             // Insert into fd table
             let new_fd = 64u32; // simplified: real impl uses next free slot
             (new_fd, errno::SUCCESS)
